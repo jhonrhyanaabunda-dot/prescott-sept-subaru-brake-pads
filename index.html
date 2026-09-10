@@ -140,7 +140,7 @@
     text-wrap: balance;
     overflow-wrap: break-word;
     word-wrap: break-word;
-    hyphens: auto;
+    hyphens: manual;
   }
   .hero h1 em { font-style: normal; font-weight: 700; color: var(--blue); }
   .hero h1 .num { font-feature-settings: "lnum"; font-weight: 500; }
@@ -287,7 +287,7 @@
     text-wrap: balance;
     overflow-wrap: break-word;
     word-wrap: break-word;
-    hyphens: auto;
+    hyphens: manual;
   }
   h2.section-h em { font-style: normal; color: var(--blue); font-weight: 700; }
   h3 { font-family: var(--display); font-weight: 700; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em; margin: 40px 0 16px; color: var(--ink); }
@@ -308,18 +308,10 @@
     margin: 0 0 28px;
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   }
-  p.tldr::before {
-    content: "Short answer: ";
-    color: var(--blue);
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    font-size: 11px;
-    display: block;
-    margin-bottom: 4px;
-  }
 
   ul.bullets { padding-left: 20px; margin: 0 0 22px; }
+  ol.steps { padding-left: 20px; margin: 0 0 22px; }
+  ol.steps li { margin: 8px 0; padding-left: 4px; }
   ul.bullets li { margin: 6px 0; }
 
   blockquote.pull {
@@ -496,7 +488,7 @@
     margin: 0;
   }
   .spec-strip .num small { display: block; font-family: var(--sans); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 600; line-height: 1.4; margin-top: 6px; }
-  .spec-strip .lbl { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); line-height: 1.5; margin: 0; max-width: 22ch; display: flex; align-items: flex-start; justify-content: center; text-wrap: balance; }
+  .spec-strip .lbl { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); line-height: 1.5; margin: 0; max-width: 22ch; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-wrap: balance; }
 
   /* ---------- Safety badge ---------- */
   .safety-banner {
@@ -1167,6 +1159,45 @@
     padding: 0; margin: -1px; overflow: hidden;
     clip: rect(0,0,0,0); white-space: nowrap; border: 0;
   }
+
+  /* Video embed — matches the July Prescott articles */
+  .video-embed { margin: 20px 0; }
+  .video-frame {
+    position: relative;
+    aspect-ratio: 16/9;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: #0b1116;
+    box-shadow: 0 1px 3px rgba(11,58,111,.08);
+  }
+  .video-frame iframe {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    border: 0; display: block;
+  }
+
+  /* Readiness quiz — ported from the July Prescott articles */
+.quiz { position: relative; border: 1px solid #cfe0f5; background: var(--white); border-radius: var(--radius-md); padding: 30px 28px 28px; margin: 28px 0; overflow: hidden; box-shadow: 0 1px 3px rgba(11,58,111,.05); }
+.quiz-kick { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); font-weight: 700; margin: 0 0 8px; }
+.quiz-title { font-family: var(--display); font-size: 21px; font-weight: 600; line-height: 1.25; color: var(--ink); margin: 0 0 22px; letter-spacing: -0.01em; }
+.quiz-progress { display: flex; gap: 6px; margin: 0 0 20px; }
+.quiz-progress span { flex: 1; height: 4px; border-radius: 999px; background: var(--rule); transition: background .25s ease; }
+.quiz-progress span.on { background: var(--blue); }
+.quiz-q { font-family: var(--display); font-size: 20px; font-weight: 600; line-height: 1.3; color: var(--ink); margin: 0 0 18px; letter-spacing: -0.01em; }
+.quiz-opts { display: grid; gap: 10px; }
+.quiz-opt { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; font-family: var(--sans); font-size: 15.5px; line-height: 1.4; color: var(--ink); background: var(--white); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: 16px 18px; cursor: pointer; transition: border-color .15s ease, background .15s ease, transform .05s ease; }
+.quiz-opt .tick { flex: none; width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--rule); }
+.quiz-back { margin-top: 18px; background: none; border: none; padding: 6px 0; font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; }
+.quiz-note { font-size: 12.5px; line-height: 1.5; color: var(--muted); margin: 16px 0 0; }
+.quiz-result { text-align: left; }
+.quiz-result .r-kick { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); font-weight: 700; margin: 0 0 6px; }
+.quiz-result .r-trim { font-family: var(--display); font-size: 26px; font-weight: 700; line-height: 1.15; color: var(--ink); margin: 0 0 12px; letter-spacing: -0.02em; }
+.quiz-result .r-why { font-size: 15.5px; line-height: 1.55; color: var(--ink-soft); margin: 0 0 24px; max-width: 48ch; }
+.quiz-result .r-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.quiz-result .r-btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--display); font-weight: 600; font-size: 15px; text-decoration: none; border-radius: 999px; padding: 13px 26px; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+.quiz-result .r-btn.primary { background: var(--blue); color: #fff; border: 1px solid var(--blue); }
+.quiz-result .r-btn.secondary { background: transparent; color: var(--blue-deep); border: 1px solid var(--rule); }
+.quiz-restart { margin-top: 18px; background: none; border: none; padding: 6px 0; font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; }
 </style>
 </head>
 <body>
@@ -1178,14 +1209,14 @@
 <header class="hero" id="main-content">
   <div class="wrap">
     <div class="eyebrow"><span class="pip"></span> Service · Prescott · Certified Brake Service</div>
-    <h1>Subaru <em>brake pads</em> &amp; brake service in Prescott.</h1>
-    <p class="deck">Subaru brake pads are the wear part that stops your car. Our certified service team inspects, measures, and replaces them with the right parts for your Forester, Outback, Crosstrek, Ascent, or Solterra, and a real brake job is more than swapping pads. Here's what brake pad service covers, when to do it, and why brake fluid is a separate but related job.</p>
+    <h1>Get quality Subaru <em>brake pads</em> &amp; brake service in Prescott, AZ today.</h1>
+    <p class="deck">If your Subaru squeals, pulses, or takes longer to stop, the brake pads are the first thing to check. We measure them and quote the full job in writing before any work starts.</p>
 
     <div class="hero-meta">
       <div class="item"><div class="lbl">Address</div><div class="val">3230 Willow Creek Rd<small>Prescott, AZ 86301</small></div></div>
       <div class="item"><div class="lbl">Service contact</div><div class="val" style="font-size:15px; line-height:1.3;"><a href="https://www.findlaysubaruprescott.com/contactus" style="color:inherit;">Subaru of Prescott Contact Portal</a><small>Verify current contact endpoints</small></div></div>
       <div class="item"><div class="lbl">Service hours</div><div class="val">Mon–Fri 7–6<small>Sat 8–4 Express · Sun closed</small></div></div>
-      <div class="item"><div class="lbl">Google rating</div><div class="val"><a class="price-link" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TCo3yig0yEoxYLRSNaiwMDdKMUpLNLQwSTEwMDJMszKoMDNJMzRNS0tLNDJOSzM3TvMST8vMS8lJrFQoLk1KLCpVKChKLU7OLykBAI2cGLs&q=findlay+subaru+prescott&oq=findlay+sub&gs_lcrp=EgZjaHJvbWUqDQgDEC4YrwEYxwEYgAQyBggAEEUYOzINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDINCAMQLhivARjHARiABDIGCAQQRRg5MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINjM1OWowajeoAgiwAgHxBX1oIbzwBgX6&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x872d2fa184d0021f:0x64f15fffa23ff73f,1,,,," target="_blank" rel="noopener">4.8 ★</a><small><a class="price-link" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TCo3yig0yEoxYLRSNaiwMDdKMUpLNLQwSTEwMDJMszKoMDNJMzRNS0tLNDJOSzM3TvMST8vMS8lJrFQoLk1KLCpVKChKLU7OLykBAI2cGLs&q=findlay+subaru+prescott&oq=findlay+sub&gs_lcrp=EgZjaHJvbWUqDQgDEC4YrwEYxwEYgAQyBggAEEUYOzINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDINCAMQLhivARjHARiABDIGCAQQRRg5MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINjM1OWowajeoAgiwAgHxBX1oIbzwBgX6&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x872d2fa184d0021f:0x64f15fffa23ff73f,1,,,," target="_blank" rel="noopener">1,710+ live Google reviews</a></small></div></div>
+      <div class="item"><div class="lbl">Google rating</div><div class="val"><a class="price-link" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TCo3yig0yEoxYLRSNaiwMDdKMUpLNLQwSTEwMDJMszKoMDNJMzRNS0tLNDJOSzM3TvMST8vMS8lJrFQoLk1KLCpVKChKLU7OLykBAI2cGLs&q=findlay+subaru+prescott&oq=findlay+sub&gs_lcrp=EgZjaHJvbWUqDQgDEC4YrwEYxwEYgAQyBggAEEUYOzINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDINCAMQLhivARjHARiABDIGCAQQRRg5MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINjM1OWowajeoAgiwAgHxBX1oIbzwBgX6&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x872d2fa184d0021f:0x64f15fffa23ff73f,1,,,," target="_blank" rel="noopener">4.8 ★</a><small><a class="price-link" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TCo3yig0yEoxYLRSNaiwMDdKMUpLNLQwSTEwMDJMszKoMDNJMzRNS0tLNDJOSzM3TvMST8vMS8lJrFQoLk1KLCpVKChKLU7OLykBAI2cGLs&q=findlay+subaru+prescott&oq=findlay+sub&gs_lcrp=EgZjaHJvbWUqDQgDEC4YrwEYxwEYgAQyBggAEEUYOzINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDINCAMQLhivARjHARiABDIGCAQQRRg5MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINjM1OWowajeoAgiwAgHxBX1oIbzwBgX6&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x872d2fa184d0021f:0x64f15fffa23ff73f,1,,,," target="_blank" rel="noopener">1,718+ live Google reviews</a></small></div></div>
     </div>
   </div>
 
@@ -1199,7 +1230,6 @@
       fetchpriority="high"
       decoding="async"
     />
-    <span class="credit">FINDLAY SUBARU PRESCOTT · ED. 26</span>
     <figcaption id="hero-figcaption" class="sr-only">Findlay Subaru Prescott technicians performing a brake pad inspection and brake service on a Subaru.</figcaption>
   </figure>
 </header>
@@ -1220,7 +1250,7 @@
         <li><a href="#cost-of-ownership">Warranty &amp; your brakes</a></li>
         <li><a href="#why-us">Ready to book</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#sources">Sources</a></li>
+        
       </ol>
     </nav>
 
@@ -1231,11 +1261,11 @@
       <section class="s" id="the-argument">
         <div class="section-num"><span>01</span><span>When Subaru brake pads need replacing</span></div>
         <h2 class="section-h">Brake pads wear down every time you slow the car, and Prescott wears them <em>faster</em>.</h2>
-        <p class="lede">The friction material thins until it reaches the wear limit, and then it needs replacing. Mountain-desert driving around Prescott, with steep grades and stop-and-go town traffic, can wear pads faster than flat highway commuting. At Findlay Subaru Prescott (3230 Willow Creek Road), our certified service team measures the pads before recommending anything.</p>
+        <p class="lede">The friction material thins until it reaches the wear limit, then it needs replacing. Prescott's steep grades and stop-and-go town traffic wear pads faster than flat highway commuting. Our certified service team measures the pads before recommending anything.</p>
         <p>Watch for these signs:</p>
         <ul class="bullets">
           <li>A squeal or chirp when you brake gently</li>
-          <li>A grinding sound, which usually means the pad is gone and metal is touching the rotor</li>
+          <li>A grinding sound, which can mean the pad is gone and metal is touching the rotor</li>
           <li>A longer stopping distance or a soft, low pedal</li>
           <li>A brake warning light on the dash</li>
           <li>Vibration through the pedal when slowing down</li>
@@ -1243,7 +1273,20 @@
         <p>Some Subaru models have a brake pad wear indicator that triggers a dashboard alert. Do not wait for grinding. Grinding often means you now need rotors too, which costs more than pads alone.</p>
 
         <h3>How long do Subaru brake pads last?</h3>
-        <p>Brake pad life depends on driving, not just mileage. City drivers brake more, so pads wear faster. Front pads usually wear before rear pads because the front brakes do most of the stopping work. There is no single mileage number that fits every owner. For the official maintenance and inspection guidance for your exact model and year, check your owner's manual or <a href="https://www.subaru.com/owners/index.html" target="_blank" rel="noopener">Subaru's owner resources</a>.</p>
+        <p>Brake pad life depends on how you drive, not just mileage, so city drivers wear pads faster than highway commuters. Front pads usually go before rear pads, because the front brakes do most of the stopping.</p>
+        <div class="quiz" id="brake-quiz" data-quiz>
+          <div class="quiz-head">
+            <p class="quiz-kick">60-second brake check</p>
+            <p class="quiz-title">Do your brakes need looking at?</p>
+          </div>
+          <div class="quiz-stage" hidden>
+            <div class="quiz-progress" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="quiz-qwrap"></div>
+            <button type="button" class="quiz-back" hidden>&larr; Back</button>
+          </div>
+          <p class="quiz-note">A quick self-check, not an inspection. Whatever it flags, our techs measure all four corners on the service drive before any work.</p>
+        </div>
+
 
         <div class="glance">
           <h4>Subaru brake service at a glance</h4>
@@ -1254,7 +1297,7 @@
             <div class="row"><dt>Brake fluid</dt><dd>A separate, time-based service · not covered by a pad swap</dd></div>
             <div class="row"><dt>Service hours</dt><dd>Mon–Fri 7–6 · Sat 8–4 (Express only) · Sun closed</dd></div>
             <div class="row"><dt>Address</dt><dd>3230 Willow Creek Road, Prescott, AZ 86301</dd></div>
-            <div class="row"><dt>Google rating</dt><dd><a class="price-link" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TCo3yig0yEoxYLRSNaiwMDdKMUpLNLQwSTEwMDJMszKoMDNJMzRNS0tLNDJOSzM3TvMST8vMS8lJrFQoLk1KLCpVKChKLU7OLykBAI2cGLs&q=findlay+subaru+prescott&oq=findlay+sub&gs_lcrp=EgZjaHJvbWUqDQgDEC4YrwEYxwEYgAQyBggAEEUYOzINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDINCAMQLhivARjHARiABDIGCAQQRRg5MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINjM1OWowajeoAgiwAgHxBX1oIbzwBgX6&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x872d2fa184d0021f:0x64f15fffa23ff73f,1,,,," target="_blank" rel="noopener">4.8 ★ from 1,710+ live Google reviews</a></dd></div>
+            <div class="row"><dt>Google rating</dt><dd><a class="price-link" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TCo3yig0yEoxYLRSNaiwMDdKMUpLNLQwSTEwMDJMszKoMDNJMzRNS0tLNDJOSzM3TvMST8vMS8lJrFQoLk1KLCpVKChKLU7OLykBAI2cGLs&q=findlay+subaru+prescott&oq=findlay+sub&gs_lcrp=EgZjaHJvbWUqDQgDEC4YrwEYxwEYgAQyBggAEEUYOzINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDINCAMQLhivARjHARiABDIGCAQQRRg5MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINjM1OWowajeoAgiwAgHxBX1oIbzwBgX6&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x872d2fa184d0021f:0x64f15fffa23ff73f,1,,,," target="_blank" rel="noopener">4.8 ★ from 1,718+ live Google reviews</a></dd></div>
             <div class="row"><dt>CARFAX</dt><dd><a class="price-link" href="https://www.carfax.com/Dealerships-Prescott-AZ_c881" target="_blank" rel="noopener">Top-Rated Dealer 6 years in a row (2019–2024)</a></dd></div>
           </dl>
         </div>
@@ -1263,28 +1306,20 @@
       <!-- §02 What a Subaru brake job includes -->
       <section class="s" id="spec-sheet">
         <div class="section-num"><span>02</span><span>What a Subaru brake job includes</span></div>
-        <h2 class="section-h">An inspection plus replacement, not a <em>parts swap</em> in the dark.</h2>
-        <p class="tldr">A brake pad service at our shop starts with measurements: pad thickness front and rear, rotor condition, caliper movement, and fluid. You see the numbers, then we recommend pads, rotors, or both. Here is what our service team does.</p>
+        <h2 class="section-h">Inspection <em>before</em> replacement.</h2>
+        <p>A brake pad service at our shop starts with measurements: pad thickness front and rear, rotor condition, caliper movement, and fluid. You see the numbers, and then we recommend pads, rotors, or both. Here is what our service team does.</p>
 
-        <div class="cross-table" style="margin-top: 24px;">
-          <table>
-            <thead>
-              <tr>
-                <th>Step</th>
-                <th class="featured"><span class="model">What happens</span><span class="style">Every brake visit</span></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><th>Inspect</th><td class="featured">Measure pad thickness front and rear, check rotors, calipers, and hardware</td></tr>
-              <tr><th>Report</th><td class="featured">Show you the measurements and recommend pads, rotors, or both</td></tr>
-              <tr><th>Replace</th><td class="featured">Install pads, resurface or replace rotors if needed, fit new hardware</td></tr>
-              <tr><th>Lubricate</th><td class="featured">Service caliper slide pins so the new pads move freely</td></tr>
-              <tr><th>Test</th><td class="featured">Bed in the pads and road-test the car before handoff</td></tr>
-            </tbody>
-          </table>
-        </div>
+        <ol class="steps" style="margin-top: 20px;">
+          <li><strong>Inspect.</strong> Measure pad thickness front and rear, and check rotors, calipers, and hardware.</li>
+          <li><strong>Report.</strong> Show you the measurements, then recommend pads, rotors, or both.</li>
+          <li><strong>Replace.</strong> Install pads, resurface or replace rotors if needed, and fit new hardware.</li>
+          <li><strong>Lubricate.</strong> Service the caliper slide pins so the new pads move freely.</li>
+          <li><strong>Test.</strong> Bed in the pads and road-test the car before handoff.</li>
+        </ol>
 
-        <p style="margin-top: 24px;">We use parts matched to your Subaru. Brakes are a safety system, so the fit and friction rating matter. If your rotors are below spec, resurfacing or replacing them is part of a proper repair, not an upsell. Our customers regularly note "thorough inspection" and "fixed what needed to be fixed" in reviews, and that is the standard we hold.</p>
+        <p style="margin-top: 24px;">We use parts matched to your Subaru. Brakes are a safety system, so fit and friction rating matter. If your rotors are below spec, resurfacing or replacing them is part of a proper repair, not an upsell.</p>
+
+        <p>Reviews regularly note our thorough inspections. That is the standard we hold.</p>
 
         <div class="trims">
           <article class="trim">
@@ -1321,6 +1356,7 @@
             <div class="engine-row"><span class="engine">Every model</span><span class="badge">Matched parts</span></div>
             <h4 class="name">Forester to Solterra</h4>
             <p class="equip">Parts matched to your exact Subaru, Forester, Outback, Crosstrek, Ascent, or Solterra, because brakes are a safety system and the friction rating matters.</p>
+
             <a class="inv-link" href="https://www.findlaysubaruprescott.com/" aria-label="Findlay Subaru Prescott">Visit our website <span aria-hidden="true">→</span></a>
           </article>
         </div>
@@ -1346,12 +1382,12 @@
           <li><strong>Brake pads</strong> wear mechanically and get replaced when thin.</li>
           <li><strong>Brake fluid</strong> absorbs moisture over time and gets flushed on a time-based interval.</li>
         </ul>
-        <p>You can need a fluid flush with healthy pads, or new pads with healthy fluid. Many owners assume one service covers both. It does not. For a full breakdown of the fluid side, see our companion page on <a href="https://www.findlaysubaruprescott.com/maintain-the-love">Subaru brake fluid and brake service</a>, and use the <a href="https://www.findlaysubaruprescott.com/maintain-the-love">Subaru maintenance schedule</a> to plan both around your mileage.</p>
+        <p>You can need a fluid flush with healthy pads, or new pads with healthy fluid. You might assume one service covers both, but it does not.</p>
 
         <div class="awd-callout">
           <div class="eyebrow-sm">The part most owners miss</div>
           <h3>A pad replacement does not refresh your brake fluid, and a fluid flush does not renew your pads.</h3>
-          <p>Pads respond to how hard and how often you brake; fluid degrades on the calendar as it absorbs moisture, whether you drive or not. That's why the two land on different schedules, and why our advisors check both on every brake visit rather than assuming one covers the other.</p>
+          <p>Pads respond to how hard and how often you brake. Fluid degrades on the calendar as it absorbs moisture, whether you drive or not. That's why the two land on different schedules, and why our advisors check both on every brake visit rather than assuming one covers the other.</p>
         </div>
       </section>
 
@@ -1359,12 +1395,12 @@
       <section class="s" id="also-test-drive">
         <div class="section-num"><span>04</span><span>What we see in the service lane</span></div>
         <h2 class="section-h">A squeal does not always mean <em>worn pads</em>.</h2>
-        <p class="tldr">As of June 2026, brake jobs are one of the most common reasons Subaru owners book with us, and the most common surprise is how often the noise isn't the pads at all. Counterintuitively, brand-new pads can squeal too, often from hardware or a break-in issue, not wear. The only way to know is to measure.</p>
+        <p class="tldr">If a brake job brought you in, you're not alone, and often the noise isn't the pads at all. Counterintuitively, brand-new pads can squeal too, often from hardware or a break-in issue, not wear. The only way to know is to measure.</p>
 
         <h3 style="margin-top: 24px;">Two recent examples from real work.</h3>
         <ul class="bullets">
-          <li>Last month, a <strong>Crosstrek</strong> owner came in convinced she needed full brakes because of a squeal. Our service team pulled the wheels, measured the pads, and found plenty of material left. The noise traced to a glazed pad surface and a sticky caliper slide pin. We cleaned and lubricated the hardware and confirmed the fix on a road test. She left without paying for parts she did not need.</li>
-          <li>On a <strong>2026 Outback</strong> in for a brake warning light, our team inspected the rears, verified the pads were near the wear limit, and replaced them along with the slide-pin hardware. We measured the rotors, found them within spec, and resurfaced rather than replaced them. The owner saw the measurements before we touched anything.</li>
+          <li>A <strong>Crosstrek</strong> owner came in expecting a full brake job because of a squeal. The pads measured fine. The noise was a glazed pad surface and a sticky slide pin, so we cleaned and lubricated the hardware instead.</li>
+          <li>A <strong>2026 Outback</strong> came in for a brake warning light. The rear pads were near the wear limit, so we replaced them with the slide-pin hardware. The rotors measured within spec, so we resurfaced rather than replaced them. The owner saw every measurement first.</li>
         </ul>
 
         <p>With non-commissioned staff and transparent pricing, our advisors have no reason to push extra work, and our reviews echo the no-pressure, no-upselling theme again and again.</p>
@@ -1386,28 +1422,33 @@
             <thead>
               <tr>
                 <th>Day</th>
-                <th class="featured"><span class="model">Hours</span><span class="style">Service department</span></th>
+                <th><span class="model">Hours</span><span class="style">Service department</span></th>
                 <th><span class="model">Notes</span><span class="style">What to expect</span></th>
               </tr>
             </thead>
             <tbody>
-              <tr><th>Mon–Fri</th><td class="featured">7:00 AM – 6:00 PM</td><td>Full service · walk-ins for Express until 4:00 PM</td></tr>
-              <tr><th>Sat</th><td class="featured">8:00 AM – 4:00 PM</td><td>Express Service only · lighter jobs and walk-ins</td></tr>
-              <tr><th>Sun</th><td class="featured">Closed</td><td>No service</td></tr>
-              <tr><th>Schedule a visit</th><td class="featured"><a class="price-link" href="https://www.findlaysubaruprescott.com/findlay-subaru-schedule-service">Schedule online →</a></td><td><a class="price-link" href="https://www.findlaysubaruprescott.com/contactus">Subaru of Prescott Contact Portal</a></td></tr>
+              <tr><th>Mon–Fri</th><td>7:00 AM – 6:00 PM</td><td>Full service · walk-ins for Express until 4:00 PM</td></tr>
+              <tr><th>Sat</th><td>8:00 AM – 4:00 PM</td><td>Express Service only · lighter jobs and walk-ins</td></tr>
+              <tr><th>Sun</th><td>Closed</td><td>No service</td></tr>
             </tbody>
           </table>
         </div>
+          <p class="table-cta" style="margin-top:14px;font-size:14px;"><a href="https://www.findlaysubaruprescott.com/findlay-subaru-schedule-service">Schedule service online →</a> &nbsp;·&nbsp; <a href="https://www.findlaysubaruprescott.com/contactus">Subaru of Prescott Contact Portal</a></p>
 
-        <p style="margin-top: 24px;">Findlay Subaru Prescott sits at 3230 Willow Creek Road, Prescott, AZ 86301, and holds a <a class="price-link" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TCo3yig0yEoxYLRSNaiwMDdKMUpLNLQwSTEwMDJMszKoMDNJMzRNS0tLNDJOSzM3TvMST8vMS8lJrFQoLk1KLCpVKChKLU7OLykBAI2cGLs&q=findlay+subaru+prescott&oq=findlay+sub&gs_lcrp=EgZjaHJvbWUqDQgDEC4YrwEYxwEYgAQyBggAEEUYOzINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDINCAMQLhivARjHARiABDIGCAQQRRg5MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINjM1OWowajeoAgiwAgHxBX1oIbzwBgX6&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x872d2fa184d0021f:0x64f15fffa23ff73f,1,,,," target="_blank" rel="noopener">4.8 ★ rating from 1,710+ live Google reviews</a>. We have been a <a class="price-link" href="https://www.carfax.com/Dealerships-Prescott-AZ_c881" target="_blank" rel="noopener">CARFAX Top-Rated Dealer for six years in a row (2019 through 2024)</a>. Brake work is covered by our standard service standards, and the comfortable waiting area, with massage chairs and popcorn, is there if you wait.</p>
-        <p>Heavier brake jobs may be better scheduled on a weekday when full service runs; Saturday Express handles the lighter work. The easiest path is to <a href="https://www.findlaysubaruprescott.com/findlay-subaru-schedule-service">schedule service</a> online and let us confirm timing.</p>
+        <ul class="bullets" style="margin-top: 24px;">
+          <li><strong>Where we are.</strong> 3230 Willow Creek Road, Prescott, AZ 86301.</li>
+          <li><strong>Rated 4.8 &#9733;</strong> from <a class="price-link" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TCo3yig0yEoxYLRSNaiwMDdKMUpLNLQwSTEwMDJMszKoMDNJMzRNS0tLNDJOSzM3TvMST8vMS8lJrFQoLk1KLCpVKChKLU7OLykBAI2cGLs&amp;q=findlay+subaru+prescott&amp;oq=findlay+sub&amp;gs_lcrp=EgZjaHJvbWUqDQgDEC4YrwEYxwEYgAQyBggAEEUYOzINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDINCAMQLhivARjHARiABDIGCAQQRRg5MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINjM1OWowajeoAgiwAgHxBX1oIbzwBgX6&amp;sourceid=chrome&amp;source=chrome.ob&amp;ie=UTF-8#lrd=0x872d2fa184d0021f:0x64f15fffa23ff73f,1,,,," target="_blank" rel="noopener">1,718+ live Google reviews</a>.</li>
+          <li><strong>CARFAX Top-Rated Dealer</strong> 6 years running, <a class="price-link" href="https://www.carfax.com/Dealerships-Prescott-AZ_c881" target="_blank" rel="noopener">2019 through 2024</a>.</li>
+          <li><strong>While you wait.</strong> A comfortable waiting area with massage chairs and popcorn.</li>
+        </ul>
+        <p>Heavier brake jobs may be better scheduled on a weekday when full service runs. Saturday Express handles the lighter work. The easiest path is to <a href="https://www.findlaysubaruprescott.com/findlay-subaru-schedule-service">schedule service</a> online and let us confirm timing.</p>
       </section>
 
       <!-- §06 Warranty and your brakes -->
       <section class="s" id="cost-of-ownership">
         <div class="section-num"><span>06</span><span>Warranty and your brakes</span></div>
         <h2 class="section-h">Pads and rotors are <em>wear items</em>, but the coverage still matters.</h2>
-        <p class="tldr">Brake pads and rotors are wear items, so they are not covered the way a powertrain part is. If a brake component fails because of a defect rather than wear, that is a different conversation, and our team will walk you through it.</p>
+        <p>Brake pads and rotors are wear items, so they aren't covered like powertrain components are. But if a brake component fails because of a defect rather than wear, that's a different conversation, and our team will walk you through it.</p>
 
         <h3 style="margin-top: 24px;">Your Subaru's warranty coverage.</h3>
         <ul class="bullets">
@@ -1419,20 +1460,20 @@
         <p>For open safety recalls on your specific VIN, check <a href="https://www.nhtsa.gov/recalls" target="_blank" rel="noopener">NHTSA's recall lookup</a>. For maintenance pricing, ask us for current Subaru specs and service offers rather than guessing from an online figure.</p>
 
         <div class="spec-strip">
-          <div class="item"><div class="num">4.8 ★</div><div class="lbl">Live Google rating<br><a class="price-link" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TCo3yig0yEoxYLRSNaiwMDdKMUpLNLQwSTEwMDJMszKoMDNJMzRNS0tLNDJOSzM3TvMST8vMS8lJrFQoLk1KLCpVKChKLU7OLykBAI2cGLs&q=findlay+subaru+prescott&oq=findlay+sub&gs_lcrp=EgZjaHJvbWUqDQgDEC4YrwEYxwEYgAQyBggAEEUYOzINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDINCAMQLhivARjHARiABDIGCAQQRRg5MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINjM1OWowajeoAgiwAgHxBX1oIbzwBgX6&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x872d2fa184d0021f:0x64f15fffa23ff73f,1,,,," target="_blank" rel="noopener">1,710+ reviews</a></div></div>
+          <div class="item"><div class="num">4.8 ★</div><div class="lbl">Live Google rating<br><a class="price-link" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TCo3yig0yEoxYLRSNaiwMDdKMUpLNLQwSTEwMDJMszKoMDNJMzRNS0tLNDJOSzM3TvMST8vMS8lJrFQoLk1KLCpVKChKLU7OLykBAI2cGLs&q=findlay+subaru+prescott&oq=findlay+sub&gs_lcrp=EgZjaHJvbWUqDQgDEC4YrwEYxwEYgAQyBggAEEUYOzINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDINCAMQLhivARjHARiABDIGCAQQRRg5MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINjM1OWowajeoAgiwAgHxBX1oIbzwBgX6&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x872d2fa184d0021f:0x64f15fffa23ff73f,1,,,," target="_blank" rel="noopener">1,718+ reviews</a></div></div>
           <div class="item"><div class="num">7 – 6</div><div class="lbl">Mon–Fri full<br>service hours</div></div>
           <div class="item"><div class="num">8 – 4</div><div class="lbl">Saturday Express<br>Service · walk-ins</div></div>
-          <div class="item"><div class="num">6 yrs</div><div class="lbl">CARFAX Top-Rated<br><a class="price-link" href="https://www.carfax.com/Dealerships-Prescott-AZ_c881" target="_blank" rel="noopener">2019–2024</a></div></div>
+          <div class="item"><div class="num">6 years</div><div class="lbl">CARFAX Top-Rated<br><a class="price-link" href="https://www.carfax.com/Dealerships-Prescott-AZ_c881" target="_blank" rel="noopener">2019–2024</a></div></div>
         </div>
 
-        <p>For any brake question or to schedule a service appointment, reach us through the <strong><a href="https://www.findlaysubaruprescott.com/contactus">Subaru of Prescott Contact Portal</a></strong>. We'll confirm what's due for your exact model and mileage and pull your VIN before quoting the visit.</p>
+        <p>For any brake question or to schedule a service appointment, <strong><a href="https://www.findlaysubaruprescott.com/contactus">get in touch with us</a></strong>. We'll confirm what's due for your exact model and mileage and pull your VIN before quoting the visit.</p>
       </section>
 
       <!-- Inline CTA -->
       <aside class="cta-inline">
         <div class="eyebrow">Findlay Subaru Prescott</div>
-        <h5>Squeal, soft pedal, or a warning light? Get it measured, not guessed at.</h5>
-        <p class="lede">Reach our Service team through the Subaru of Prescott Contact Portal to book brake service. We measure pad thickness and rotor condition, show you the numbers, and use parts matched to your exact Subaru, with every visit logged against your VIN.</p>
+        <h5>Squeal, soft pedal, or a warning light?</h5>
+        <p class="lede">Get your brake components measured. Reach our Service team through the Subaru of Prescott Contact Portal to book brake service. We check pad thickness and rotor condition, show you the numbers, and use parts matched to your exact Subaru, with every visit logged against your VIN.</p>
         <div class="actions">
           <a class="btn primary" href="https://www.findlaysubaruprescott.com/findlay-subaru-schedule-service">Schedule service <span class="arrow">→</span></a>
           <a class="btn ghost" href="https://www.findlaysubaruprescott.com/contactus">Contact Portal</a>
@@ -1440,7 +1481,7 @@
         <div class="meta">
           <div class="meta-item"><span class="k">Address</span><span class="v">3230 Willow Creek Road, Prescott AZ 86301</span></div>
           <div class="meta-item"><span class="k">Service hours</span><span class="v">Mon–Fri 7–6 · Sat 8–4 Express · Sun closed</span></div>
-          <div class="meta-item"><span class="k">Google rating</span><span class="v"><a class="price-link" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TCo3yig0yEoxYLRSNaiwMDdKMUpLNLQwSTEwMDJMszKoMDNJMzRNS0tLNDJOSzM3TvMST8vMS8lJrFQoLk1KLCpVKChKLU7OLykBAI2cGLs&q=findlay+subaru+prescott&oq=findlay+sub&gs_lcrp=EgZjaHJvbWUqDQgDEC4YrwEYxwEYgAQyBggAEEUYOzINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDINCAMQLhivARjHARiABDIGCAQQRRg5MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINjM1OWowajeoAgiwAgHxBX1oIbzwBgX6&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x872d2fa184d0021f:0x64f15fffa23ff73f,1,,,," target="_blank" rel="noopener">4.8 ★ · 1,710+ live reviews</a></span></div>
+          <div class="meta-item"><span class="k">Google rating</span><span class="v"><a class="price-link" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TCo3yig0yEoxYLRSNaiwMDdKMUpLNLQwSTEwMDJMszKoMDNJMzRNS0tLNDJOSzM3TvMST8vMS8lJrFQoLk1KLCpVKChKLU7OLykBAI2cGLs&q=findlay+subaru+prescott&oq=findlay+sub&gs_lcrp=EgZjaHJvbWUqDQgDEC4YrwEYxwEYgAQyBggAEEUYOzINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDINCAMQLhivARjHARiABDIGCAQQRRg5MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINjM1OWowajeoAgiwAgHxBX1oIbzwBgX6&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x872d2fa184d0021f:0x64f15fffa23ff73f,1,,,," target="_blank" rel="noopener">4.8 ★ · 1,718+ live reviews</a></span></div>
         </div>
       </aside>
 
@@ -1448,11 +1489,9 @@
       <section class="s" id="why-us">
         <div class="section-num"><span>07</span><span>Ready to book brake service?</span></div>
         <h2 class="section-h">Brakes are not the place to <em>wait and see</em>.</h2>
-        <p class="tldr">If you hear a squeal, feel a soft pedal, or see a warning light, get it measured. A measured inspection either clears the car or catches the wear before it takes the rotors with it.</p>
+        <p class="tldr">If you hear a squeal, feel a soft pedal, or see a warning light, get it measured. A measured inspection either clears the car or catches the wear before it takes the rotors with it. Schedule your brake pad inspection with us today.</p>
 
-        <h3 style="margin-top: 24px;">Where to start.</h3>
-        <p>Browse the current <a href="https://www.findlaysubaruprescott.com/inventory/new">new vehicles</a>, <a href="https://www.findlaysubaruprescott.com/findlay-subaru-schedule-service">schedule service</a> online, or explore <a href="https://www.findlaysubaruprescott.com/finance-department">financing</a>, and ask us for current offers. You can also <a href="https://www.findlaysubaruprescott.com/contactus">contact us</a> through our site; since our phone numbers rotate, the contact page always routes you to the right team.</p>
-        <p>Findlay Subaru Prescott sits at 3230 Willow Creek Road, Prescott, AZ 86301. Use the <a href="https://www.findlaysubaruprescott.com/maintain-the-love">Subaru maintenance schedule by mileage</a> to plan brake fluid and other intervals around your odometer, and let our advisors confirm what's due before you visit.</p>
+        
       </section>
     </div>
 
@@ -1467,7 +1506,7 @@
         <div class="lbl">Live Google rating</div>
         <div class="stars" aria-hidden="true">★★★★★</div>
         <strong>4.8</strong>
-        <div class="sub"><a href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TCo3yig0yEoxYLRSNaiwMDdKMUpLNLQwSTEwMDJMszKoMDNJMzRNS0tLNDJOSzM3TvMST8vMS8lJrFQoLk1KLCpVKChKLU7OLykBAI2cGLs&q=findlay+subaru+prescott&oq=findlay+sub&gs_lcrp=EgZjaHJvbWUqDQgDEC4YrwEYxwEYgAQyBggAEEUYOzINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDINCAMQLhivARjHARiABDIGCAQQRRg5MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINjM1OWowajeoAgiwAgHxBX1oIbzwBgX6&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x872d2fa184d0021f:0x64f15fffa23ff73f,1,,,," target="_blank" rel="noopener" style="color:var(--blue-deep);">1,710+ Google reviews · see them live →</a></div>
+        <div class="sub"><a href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TCo3yig0yEoxYLRSNaiwMDdKMUpLNLQwSTEwMDJMszKoMDNJMzRNS0tLNDJOSzM3TvMST8vMS8lJrFQoLk1KLCpVKChKLU7OLykBAI2cGLs&q=findlay+subaru+prescott&oq=findlay+sub&gs_lcrp=EgZjaHJvbWUqDQgDEC4YrwEYxwEYgAQyBggAEEUYOzINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDINCAMQLhivARjHARiABDIGCAQQRRg5MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINjM1OWowajeoAgiwAgHxBX1oIbzwBgX6&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x872d2fa184d0021f:0x64f15fffa23ff73f,1,,,," target="_blank" rel="noopener" style="color:var(--blue-deep);">1,718+ Google reviews · see them live →</a></div>
       </div>
       <div class="chip">
         <div class="lbl">Service hours</div>
@@ -1482,7 +1521,7 @@
 <section class="findlay-band">
   <div class="wrap">
     <div class="eyebrow">Findlay Subaru Prescott · 3230 Willow Creek Road</div>
-    <h2>The <em>Subaru</em> brake shop Prescott owners trust to measure before it replaces.</h2>
+    <h2>The Subaru brake shop Prescott owners <em>trust</em>.</h2>
 
     <div class="trust-grid">
       <div class="item">
@@ -1491,10 +1530,10 @@
       </div>
       <div class="item">
         <div class="num">4.8</div>
-        <div class="lbl">Live Google rating across<br><a class="price-link" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TCo3yig0yEoxYLRSNaiwMDdKMUpLNLQwSTEwMDJMszKoMDNJMzRNS0tLNDJOSzM3TvMST8vMS8lJrFQoLk1KLCpVKChKLU7OLykBAI2cGLs&q=findlay+subaru+prescott&oq=findlay+sub&gs_lcrp=EgZjaHJvbWUqDQgDEC4YrwEYxwEYgAQyBggAEEUYOzINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDINCAMQLhivARjHARiABDIGCAQQRRg5MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINjM1OWowajeoAgiwAgHxBX1oIbzwBgX6&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x872d2fa184d0021f:0x64f15fffa23ff73f,1,,,," target="_blank" rel="noopener">1,710+ reviews</a></div>
+        <div class="lbl">Live Google rating across<br><a class="price-link" href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TCo3yig0yEoxYLRSNaiwMDdKMUpLNLQwSTEwMDJMszKoMDNJMzRNS0tLNDJOSzM3TvMST8vMS8lJrFQoLk1KLCpVKChKLU7OLykBAI2cGLs&q=findlay+subaru+prescott&oq=findlay+sub&gs_lcrp=EgZjaHJvbWUqDQgDEC4YrwEYxwEYgAQyBggAEEUYOzINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDINCAMQLhivARjHARiABDIGCAQQRRg5MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINjM1OWowajeoAgiwAgHxBX1oIbzwBgX6&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x872d2fa184d0021f:0x64f15fffa23ff73f,1,,,," target="_blank" rel="noopener">1,718+ reviews</a></div>
       </div>
       <div class="item">
-        <div class="num">6 <small>yrs</small></div>
+        <div class="num">6 <small>years</small></div>
         <div class="lbl">CARFAX Top-Rated Dealer<br><a class="price-link" href="https://www.carfax.com/Dealerships-Prescott-AZ_c881" target="_blank" rel="noopener">2019 through 2024</a></div>
       </div>
       <div class="item">
@@ -1505,17 +1544,17 @@
 
     <div class="findlay-extras">
       <div>
-        <h5>The honest read on brake noise</h5>
+        <h5>Hearing brake noise?</h5>
         <p>A squeal does not always mean worn pads, and brand-new pads can squeal too. The only way to know is to measure, so we pull the wheels, measure pad thickness and rotors, and <strong>show you the numbers</strong> before recommending any work. If your brakes are healthy, we say so.</p>
       </div>
       <div>
-        <h5>Who runs the service drive</h5>
+        <h5>Who runs the service drive.</h5>
         <p>Our advisors are <strong>non-commissioned</strong>, with transparent pricing and no reason to push extra work. Reviews echo the no-pressure, no-upselling theme again and again, along with "thorough inspection" and "fixed what needed to be fixed." Every visit is logged against your VIN.</p>
       </div>
       <div>
-        <h5>Hours &amp; access</h5>
+        <h5>Hours &amp; access.</h5>
         <p>3230 Willow Creek Road, Prescott AZ 86301. Mon–Fri 7–6, Sat 8–4 (Express only, walk-ins Mon–Fri until 4 PM), Sun closed. Part of <strong>Findlay Automotive Group</strong> (founded 1961). <a href="https://www.findlaysubaruprescott.com/findlay-subaru-schedule-service">Schedule service</a> online.</p>
-        <p>You can continually cross-reference and verify direct contact endpoints or staff directories by using the official <a href="https://www.findlaysubaruprescott.com/contactus">Subaru of Prescott Contact Portal</a>.</p>
+        <p>Find our hours, address, and contact info anytime through our website.</p>
       </div>
     </div>
   </div>
@@ -1528,7 +1567,7 @@
       <h4>Continue reading</h4>
       <ol start="8">
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#sources">Sources</a></li>
+        
       </ol>
     </nav>
 
@@ -1603,35 +1642,13 @@
   </div>
 </main>
 
-<!-- Sources -->
-<section class="sources" id="sources">
-  <div class="wrap">
-    <div class="article-grid" style="padding-top:0;">
-      <div></div>
-      <div class="body">
-        <div class="section-num"><span>09</span><span>Sources and references</span></div>
-        <h3>Sources &amp; references</h3>
-        <p style="font-size:13px; color:var(--muted); line-height:1.55; margin: 0 0 6px; max-width:660px;">By the Findlay Subaru Prescott editorial team · reviewed by <strong style="color:var(--ink-soft);">Lohnie Boggs, Fixed Operations Director</strong> · published June 1, 2026.</p>
-        <p style="font-size:13px; color:var(--muted); line-height:1.55; margin: 0 0 28px; max-width:660px;">Maintenance and inspection guidance verified against Subaru USA Owner Resources. Safety-recall lookups per NHTSA. Warranty terms per Subaru's published new-vehicle coverage. As of June 2026, current offers and pricing change often; confirm specifics with our team before you visit.</p>
-        <p style="font-size:15px; color:var(--ink-soft); max-width:660px;">Local observations reflect Findlay Subaru Prescott service-department experience across the Prescott-area lineup, Forester, Outback, Crosstrek, Ascent, and the Solterra EV, including recent brake pad, rotor, and hardware work documented against each vehicle's VIN.</p>
-        <ul class="ext">
-          <li><a href="https://www.subaru.com/owners/index.html" target="_blank" rel="noopener">Subaru USA Owner Resources · official maintenance and inspection guidance by model and year</a></li>
-          <li><a href="https://www.nhtsa.gov/recalls" target="_blank" rel="noopener">NHTSA · open safety-recall lookup by VIN</a></li>
-          <li><a href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0TCo3yig0yEoxYLRSNaiwMDdKMUpLNLQwSTEwMDJMszKoMDNJMzRNS0tLNDJOSzM3TvMST8vMS8lJrFQoLk1KLCpVKChKLU7OLykBAI2cGLs&q=findlay+subaru+prescott&oq=findlay+sub&gs_lcrp=EgZjaHJvbWUqDQgDEC4YrwEYxwEYgAQyBggAEEUYOzINCAEQLhivARjHARiABDINCAIQLhivARjHARiABDINCAMQLhivARjHARiABDIGCAQQRRg5MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEINjM1OWowajeoAgiwAgHxBX1oIbzwBgX6&sourceid=chrome&source=chrome.ob&ie=UTF-8#lrd=0x872d2fa184d0021f:0x64f15fffa23ff73f,1,,,," target="_blank" rel="noopener">Google · live rating and reviews for Findlay Subaru Prescott</a></li>
-          <li><a href="https://www.findlaysubaruprescott.com/specials/service-specials" target="_blank" rel="noopener">Findlay Subaru Prescott · service department and rotating service specials</a></li>
-          <li><a href="https://www.findlayauto.com/" target="_blank" rel="noopener">Findlay Automotive Group · parent company (founded 1961)</a></li>
-        </ul>
-      </div>
-      <div></div>
-    </div>
-  </div>
-</section>
+
 
 <!-- Closing CTA -->
 <section class="closing-cta">
   <div class="wrap">
     <h2>Book your <em>Subaru</em> brake service in Prescott. Measured first, fixed right.</h2>
-    <p>Findlay Subaru Prescott · 3230 Willow Creek Road, Prescott AZ 86301. You can continually cross-reference and verify direct contact endpoints or staff directories through the official <a href="https://www.findlaysubaruprescott.com/contactus">Subaru of Prescott Contact Portal</a>. We measure pads and rotors, show you the numbers, and confirm what's due for your model and mileage.</p>
+    <p>Findlay Subaru Prescott · 3230 Willow Creek Road, Prescott AZ 86301. We measure pads and rotors, show you the numbers, and confirm what's due for your model and mileage.</p>
     <div class="actions">
       <a class="btn primary" href="https://www.findlaysubaruprescott.com/findlay-subaru-schedule-service">Schedule service <span class="arrow">→</span></a>
       <a class="btn ghost" href="https://www.findlaysubaruprescott.com/specials/service-specials">Service specials</a>
@@ -1734,7 +1751,7 @@
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.8",
-        "reviewCount": "1710",
+        "reviewCount": "1718",
         "bestRating": "5",
         "worstRating": "1"
       },
@@ -2101,5 +2118,143 @@
   })();
 </script>
 
+<script>
+  // brake-quiz: 3 questions -> verdict + booking CTA. Guidance only, mirrors the July Prescott quiz.
+  (function () {
+    const root = document.querySelector('.quiz[data-quiz]');
+    if (!root) return;
+    const stage = root.querySelector('.quiz-stage');
+    const qwrap = root.querySelector('.quiz-qwrap');
+    const backBtn = root.querySelector('.quiz-back');
+    const dots = Array.from(root.querySelectorAll('.quiz-progress span'));
+    if (!stage || !qwrap) return;
+
+    const PRIMARY = "https://www.findlaysubaruprescott.com/findlay-subaru-schedule-service";
+    const PRIMARY_LABEL = "Book a brake inspection";
+    const SECONDARY = "https://www.findlaysubaruprescott.com/contactus";
+    const SECONDARY_LABEL = "Talk to the service team";
+    const QUESTIONS = [
+      {
+            "q": "What do you hear when you brake?",
+            "opts": [
+                  {
+                        "t": "bad",
+                        "label": "A squeal, scrape, or grinding"
+                  },
+                  {
+                        "t": "ok",
+                        "label": "An occasional squeak, mostly when cold"
+                  },
+                  {
+                        "t": "good",
+                        "label": "Nothing unusual"
+                  }
+            ]
+      },
+      {
+            "q": "How does the brake pedal feel?",
+            "opts": [
+                  {
+                        "t": "bad",
+                        "label": "Soft, or it pulses under my foot"
+                  },
+                  {
+                        "t": "ok",
+                        "label": "A little different than it used to"
+                  },
+                  {
+                        "t": "good",
+                        "label": "Firm and consistent"
+                  }
+            ]
+      },
+      {
+            "q": "When were the pads last measured?",
+            "opts": [
+                  {
+                        "t": "bad",
+                        "label": "I do not know, or over a year ago"
+                  },
+                  {
+                        "t": "ok",
+                        "label": "Within the last year"
+                  },
+                  {
+                        "t": "good",
+                        "label": "Recently, and they measured fine"
+                  }
+            ]
+      }
+];
+    const OUT = {
+      "notready": {
+            "name": "Worth booking a brake inspection",
+            "why": "Grinding or a pulsing pedal usually means the pads are at or past their wear limit. Waiting turns a pad job into a pad-and-rotor job, which costs considerably more. We measure all four corners and put the number in writing before any work starts."
+      },
+      "close": {
+            "name": "Worth a measurement",
+            "why": "Nothing here is alarming on its own, but a change in noise or pedal feel normally shows up before the wear indicator does. A brake inspection is quick and tells you how many miles of pad you have left."
+      },
+      "ready": {
+            "name": "Your brakes sound healthy",
+            "why": "No noise, a firm pedal, and a recent check is the combination you want. We still measure pad thickness at every service visit, so you get warning long before anything becomes urgent."
+      }
+};
+
+    function resolve(a) {
+      const bad = a.filter(x => x === 'bad').length;
+      const good = a.filter(x => x === 'good').length;
+      if (bad >= 2) return 'notready';
+      if (good === 3) return 'ready';
+      if (bad === 1) return 'close';
+      return good >= 2 ? 'ready' : 'close';
+    }
+
+    const answers = [];
+    let idx = 0;
+    function paintDots() { dots.forEach((d, i) => d.classList.toggle('on', i <= idx)); }
+
+    function renderQuestion() {
+      const Q = QUESTIONS[idx];
+      backBtn.hidden = idx === 0;
+      paintDots();
+      qwrap.innerHTML =
+        '<p class="quiz-q">' + Q.q + '</p><div class="quiz-opts">' +
+        Q.opts.map(o => '<button type="button" class="quiz-opt" data-tag="' + o.t + '"><span class="tick"></span>' + o.label + '</button>').join('') +
+        '</div>';
+      qwrap.querySelectorAll('.quiz-opt').forEach(btn => {
+        btn.addEventListener('click', () => {
+          answers[idx] = btn.getAttribute('data-tag');
+          if (idx < QUESTIONS.length - 1) { idx++; renderQuestion(); }
+          else renderResult();
+        });
+      });
+    }
+
+    function renderResult() {
+      dots.forEach(d => d.classList.add('on'));
+      backBtn.hidden = true;
+      const o = OUT[resolve(answers)];
+      qwrap.innerHTML =
+        '<div class="quiz-result">' +
+          '<p class="r-kick">Your read</p>' +
+          '<p class="r-trim">' + o.name + '</p>' +
+          '<p class="r-why">' + o.why + '</p>' +
+          '<div class="r-actions">' +
+            '<a class="r-btn primary" href="' + PRIMARY + '">' + PRIMARY_LABEL + ' <span aria-hidden="true">&rarr;</span></a>' +
+            '<a class="r-btn secondary" href="' + SECONDARY + '">' + SECONDARY_LABEL + '</a>' +
+          '</div>' +
+          '<button type="button" class="quiz-restart">Start over</button>' +
+        '</div>';
+      const rs = qwrap.querySelector('.quiz-restart');
+      if (rs) rs.addEventListener('click', () => { idx = 0; answers.length = 0; renderQuestion(); });
+    }
+
+    backBtn.addEventListener('click', () => { if (idx > 0) { idx--; renderQuestion(); } });
+    root.classList.add('js-on');
+    stage.hidden = false;
+    renderQuestion();
+  })();
+</script>
 </body>
 </html>
