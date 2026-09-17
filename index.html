@@ -140,7 +140,8 @@
     word-wrap: break-word;
     hyphens: manual;
   }
-  .hero h1 em { font-style: normal; font-weight: 700; color: var(--blue); }
+  .hero h1 em { font-style: normal; font-weight: 700; color: var(--blue); white-space: nowrap; }
+  .hero .deck a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
   .hero h1 .num { font-feature-settings: "lnum"; font-weight: 500; }
   .hero .deck {
     font-size: clamp(16px, 2.4vw, 22px); line-height: 1.45; max-width: 760px;
@@ -1216,7 +1217,7 @@
   <div class="wrap">
     <div class="eyebrow"><span class="pip"></span> Service · Prescott · Certified Brake Service</div>
     <h1>Get quality Subaru <em>brake pads</em> &amp; brake service in Prescott, AZ today.</h1>
-    <p class="deck">If your Subaru squeals, pulses, or takes longer to stop, the brake pads are the first thing to check. We measure them and quote the full job in writing before any work starts.</p>
+    <p class="deck">If your Subaru squeals, pulses, or takes longer to stop, the <a href="https://www.findlaysubaruprescott.com/findlay-subaru-schedule-service">brake pads are the first thing to check</a>. We measure them and quote the full job in writing before any work starts.</p>
 
     <div class="hero-meta">
       <div class="item"><div class="lbl">Address</div><div class="val">3230 Willow Creek Rd<small>Prescott, AZ 86301</small></div></div>
@@ -1267,7 +1268,7 @@
       <section class="s" id="the-argument">
         <div class="section-num"><span>01</span><span>When Subaru brake pads need replacing</span></div>
         <h2 class="section-h">Brake pads wear down every time you slow the car, and Prescott wears them <em>faster</em>.</h2>
-        <p class="lede">The friction material thins until it reaches the wear limit, then it needs replacing. Prescott's steep grades and stop-and-go town traffic wear pads faster than flat highway commuting. Our certified service team measures the pads before recommending anything.</p>
+        <p class="lede">The friction material thins until it reaches the wear limit, and then it needs replacing. Prescott's steep grades and stop-and-go town traffic wear pads faster than flat highway commuting. Our certified service team measures the pads before recommending anything.</p>
         <p>Watch for these signs:</p>
         <ul class="bullets">
           <li>A squeal or chirp when you brake gently</li>
@@ -1345,38 +1346,31 @@
             <div class="engine-row"><span class="engine">Step 01</span><span class="badge">Inspect</span></div>
             <h4 class="name">Measure everything first</h4>
             <p class="equip">Pad thickness front and rear, rotor condition and thickness against minimum spec, caliper movement, hardware and fluid, before anyone recommends a part.</p>
-            <a class="inv-link" href="https://www.findlaysubaruprescott.com/findlay-subaru-schedule-service" aria-label="Schedule a brake inspection">Schedule inspection <span aria-hidden="true">→</span></a>
           </article>
           <article class="trim wilderness">
             <div class="engine-row"><span class="engine">Step 02</span><span class="badge">Report</span></div>
             <h4 class="name">You see the numbers</h4>
             <p class="equip">Measurements in hand, we recommend pads, rotors, or both, and you decide before we touch anything. Non-commissioned advisors, transparent pricing.</p>
-            <a class="inv-link" href="https://www.findlaysubaruprescott.com/contactus" aria-label="Contact us">Contact us <span aria-hidden="true">→</span></a>
           </article>
           <article class="trim">
             <div class="engine-row"><span class="engine">Step 03</span><span class="badge">Replace</span></div>
             <h4 class="name">Pads, rotors, hardware</h4>
             <p class="equip">Install pads matched to your model's fit and friction rating, resurface or replace rotors if they are below spec, and fit new hardware where it is worn.</p>
-            <a class="inv-link" href="https://www.findlaysubaruprescott.com/findlay-subaru-schedule-service" aria-label="Book brake pad replacement">Book replacement <span aria-hidden="true">→</span></a>
           </article>
           <article class="trim">
             <div class="engine-row"><span class="engine">Step 04</span><span class="badge">Lubricate</span></div>
             <h4 class="name">Caliper slide pins</h4>
             <p class="equip">Slide pins are serviced so the new pads move freely. A sticky pin is a common cause of noise and uneven wear, even on healthy pads.</p>
-            <a class="inv-link" href="https://www.findlaysubaruprescott.com/findlay-subaru-schedule-service" aria-label="Schedule brake service">Schedule service <span aria-hidden="true">→</span></a>
           </article>
           <article class="trim flagship">
             <div class="engine-row"><span class="engine">Step 05</span><span class="badge">Test</span></div>
             <h4 class="name">Bed in &amp; road-test</h4>
             <p class="equip">New pads are bedded in and the car is road-tested before handoff, so the fix is confirmed on the road, not assumed on the lift.</p>
-            <a class="inv-link" href="https://www.findlaysubaruprescott.com/findlay-subaru-schedule-service" aria-label="Book brake service">Book brake service <span aria-hidden="true">→</span></a>
           </article>
           <article class="trim">
             <div class="engine-row"><span class="engine">Every model</span><span class="badge">Matched parts</span></div>
             <h4 class="name">Forester to Solterra</h4>
             <p class="equip">Parts matched to your exact Subaru, Forester, Outback, Crosstrek, Ascent or Solterra, because brakes are a safety system and the friction rating matters.</p>
-
-            <a class="inv-link" href="https://www.findlaysubaruprescott.com/" aria-label="Findlay Subaru Prescott">Visit our website <span aria-hidden="true">→</span></a>
           </article>
         </div>
 
@@ -1451,7 +1445,7 @@
 
         <blockquote class="pull">
           "A squeal does not always mean worn pads, and new pads can squeal too. The only way to know is to measure, and we show you the measurements before we touch anything."
-          <cite>Findlay Subaru Prescott service team</cite>
+          <cite>Fixed Operations Director · Findlay Subaru Prescott</cite>
         </blockquote>
 
         <figure class="video-embed">
